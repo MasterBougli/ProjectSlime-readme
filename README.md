@@ -14,16 +14,6 @@ Assets générés sur la branche **`output`** · workflow toutes les **12 h**.
 
 ---
 
-## Comment utiliser cette galerie
-
-1. Parcours les sections ci-dessous *(aperçu live)*.
-2. Dis-moi les **IDs** que tu veux *(ex. `snake-slime`, `capsule-waving`, `feature-cards`)*.
-3. Je les intègre dans le README principal.
-
-**URL de base :** `https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output`
-
----
-
 ## 1. Contributions GitHub
 
 ### `snake-slime` — Serpent palette slime *(recommandé projet)*
