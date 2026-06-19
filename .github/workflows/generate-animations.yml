@@ -25,7 +25,7 @@ jobs:
 
       - name: Prepare folders
         run: |
-          mkdir -p dist/{01-contributions,02-stats,03-headers,04-text,05-project,06-badges}
+          mkdir -p dist/{01-contributions,02-stats,03-headers,04-text,05-project,06-badges,07-custom}
 
       - name: Generate snake variants
         uses: Platane/snk/svg-only@v3
@@ -38,6 +38,9 @@ jobs:
 
       - name: Generate custom SVG assets
         run: python scripts/generate_custom_assets.py
+
+      - name: Generate 100% custom animations
+        run: python scripts/generate_custom_animations.py
 
       - name: Download activity graph variants
         run: |

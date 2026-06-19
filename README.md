@@ -168,6 +168,41 @@ Ces formats fonctionnent dans un README mais ne sont **pas** générés par ce r
 
 ---
 
+## 8. 100% custom *(from scratch — Python/SVG pur)*
+
+| ID | Statut | Aperçu |
+|----|--------|--------|
+| `slime-blob` | ✅ custom | Blob animé pulse |
+| `mana-bar` | ✅ custom | Barre mana loop |
+| `forest-silhouette` | ✅ custom | Silvanterra animée |
+| `predator-wisp` | ✅ custom | Feux follets |
+| `contrib-grid-custom` | ✅ custom | Remplace `contrib-3d` cassé |
+| `trophy-custom` | ✅ custom | Remplace `trophy` placeholder |
+| `typing-custom` | ✅ custom | Remplace `typing-multiline` cassé |
+
+<img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/07-custom/slime-blob.svg" width="200" />
+<img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/07-custom/mana-bar.svg" width="360" />
+<img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/07-custom/forest-silhouette.svg" width="820" />
+<img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/07-custom/predator-wisp.svg" width="420" />
+<img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/07-custom/contrib-grid-custom.svg" width="820" />
+<img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/07-custom/trophy-custom.svg" width="440" />
+<img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/07-custom/typing-custom.svg" width="400" />
+
+---
+
+## Audit — ce qui ne fonctionne pas
+
+| ID | Problème |
+|----|----------|
+| `contrib-3d` | ❌ 404 — API externe |
+| `typing-multiline` | ❌ 404 — API Demolab |
+| `typing-tagline` | ❌ 404 — API Demolab |
+| `trophy` | ⚠️ Placeholder uniquement (API KO) |
+
+➡️ Remplacements custom : `contrib-grid-custom`, `typing-custom`, `trophy-custom`
+
+---
+
 ## Combinaisons recommandées
 
 | Style README | Pack suggéré |
@@ -186,6 +221,7 @@ Ces formats fonctionnent dans un README mais ne sont **pas** générés par ce r
 |--------|------|
 | `.github/workflows/generate-animations.yml` | Génère tout → branche `output` |
 | `scripts/generate_custom_assets.py` | SVG custom slime |
+| `scripts/generate_custom_animations.py` | Animations 100% custom (SMIL) |
 | `scripts/roadmap.json` | Statuts F0–F7 |
 | `scripts/config.json` | Couleurs & textes projet |
 
