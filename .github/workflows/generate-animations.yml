@@ -1,4 +1,4 @@
-name: Generate README animations
+name: Generate README gallery (all examples)
 
 on:
   schedule:
@@ -8,31 +8,70 @@ on:
     branches:
       - main
 
+env:
+  GH_USER: MasterBougli
+  BASE_RAW: https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output
+
 jobs:
   generate:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate snake.svg (slime palette)
+      - name: Prepare folders
+        run: |
+          mkdir -p dist/{01-contributions,02-stats,03-headers,04-text,05-project,06-badges}
+
+      - name: Generate snake variants
         uses: Platane/snk/svg-only@v3
         with:
-          github_user_name: MasterBougli
-          outputs: dist/snake.svg?palette=green#7ee787,#0d1117#161b22#0d1117#21262d
+          github_user_name: ${{ env.GH_USER }}
+          outputs: |
+            dist/01-contributions/snake-slime.svg?palette=green#7ee787,#0d1117#161b22#0d1117#21262d
+            dist/01-contributions/snake-dark.svg?palette=github-dark
+            dist/01-contributions/snake-ocean.svg?palette=ocean#58a6ff,#0d1117#161b22#0d1117#21262d
 
-      - name: Generate roadmap.svg
-        run: python scripts/generate_roadmap_svg.py
+      - name: Generate custom SVG assets
+        run: python scripts/generate_custom_assets.py
 
-      - name: Generate activity-graph.svg
+      - name: Download activity graph variants
         run: |
-          curl -fsSL \
-            "https://github-readme-activity-graph.vercel.app/graph?username=MasterBougli&theme=react&hide_border=true&area=true&bg_color=0d1117&color=7ee787&line=58a6ff&point=3fb950" \
-            -o dist/activity-graph.svg
+          curl -fsSL "https://github-readme-activity-graph.vercel.app/graph?username=${{ env.GH_USER }}&theme=react&hide_border=true&area=true&bg_color=0d1117&color=7ee787&line=58a6ff&point=3fb950" -o dist/01-contributions/activity-react.svg
+          curl -fsSL "https://github-readme-activity-graph.vercel.app/graph?username=${{ env.GH_USER }}&theme=github-compact&hide_border=true&bg_color=0d1117&color=7ee787" -o dist/01-contributions/activity-compact.svg
+          curl -fsSL "https://github-readme-activity-graph.vercel.app/graph?username=${{ env.GH_USER }}&theme=chartreuse-dark&hide_border=true&area=true" -o dist/01-contributions/activity-forest.svg
+
+      - name: Download GitHub stats cards
+        run: |
+          curl -fsSL "https://github-readme-stats.vercel.app/api?username=${{ env.GH_USER }}&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=7ee787&icon_color=58a6ff&text_color=e6edf3" -o dist/02-stats/stats-card.svg
+          curl -fsSL "https://github-readme-streak-stats.herokuapp.com/?user=${{ env.GH_USER }}&theme=dark&hide_border=true&background=0D1117&ring=7EE787&fire=58A6FF&currStreakLabel=7EE787" -o dist/02-stats/streak.svg
+          curl -fsSL "https://github-readme-stats.vercel.app/api/top-langs/?username=${{ env.GH_USER }}&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&title_color=7ee787&text_color=e6edf3" -o dist/02-stats/top-langs.svg
+          curl -fsSL "https://github-profile-trophy.vercel.app/?username=${{ env.GH_USER }}&theme=onedark&column=4&margin-w=8&margin-h=8&no-bg=true" -o dist/02-stats/trophy.svg
+
+      - name: Download header banners (Capsule Render)
+        run: |
+          curl -fsSL "https://capsule-render.vercel.app/api?type=waving&color=0:7ee787,100:0d1117&text=Predator%20Slime&height=120&section=header&fontSize=42&fontColor=e6edf3" -o dist/03-headers/capsule-waving.svg
+          curl -fsSL "https://capsule-render.vercel.app/api?type=soft&color=0:3fb950,100:161b22&text=ProjectSlime&height=100&section=header&fontSize=36" -o dist/03-headers/capsule-soft.svg
+          curl -fsSL "https://capsule-render.vercel.app/api?type=venom&color=0:7ee787,100:0d1117&text=Silvanterra&height=100&section=footer&fontSize=32" -o dist/03-headers/capsule-venom.svg
+
+      - name: Download typing SVG animations
+        run: |
+          curl -fsSL "https://readme-typing-svg.demolab.com/demo/?lines=Predator+Slime;UE+5.7;Silvanterra&font=Fira%20Code&center=true&width=435&height=55&size=22&color=7EE787&background=0D111700&vCenter=true" -o dist/04-text/typing-multiline.svg
+          curl -fsSL "https://readme-typing-svg.demolab.com/?lines=Absorb+·+Mimic+·+Conquer&font=Segoe+UI&center=true&width=380&height=50&size=20&color=58A6FF&background=0D111700" -o dist/04-text/typing-tagline.svg
+
+      - name: Download 3D contribution graph
+        run: |
+          curl -fsSL "https://github-profile-3d-contrib.vercel.app/profile.html.username=${{ env.GH_USER }}.svg" -o dist/01-contributions/contrib-3d.svg || echo "3d contrib skipped"
+
+      - name: Copy legacy root paths (ProjectSlime README compat)
+        run: |
+          cp dist/01-contributions/snake-slime.svg dist/snake.svg
+          cp dist/05-project/roadmap.svg dist/roadmap.svg
+          cp dist/01-contributions/activity-react.svg dist/activity-graph.svg
 
       - name: Push assets to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0

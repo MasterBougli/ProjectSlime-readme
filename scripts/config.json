@@ -1,0 +1,17 @@
+{
+  "github_user": "MasterBougli",
+  "project_name": "Predator Slime",
+  "project_slug": "ProjectSlime",
+  "tagline": "RPG slime · UE 5.7 · Silvanterra",
+  "colors": {
+    "slime": "#7ee787",
+    "forest": "#3fb950",
+    "sky": "#58a6ff",
+    "bg": "#0d1117",
+    "panel": "#161b22",
+    "border": "#30363d",
+    "text": "#e6edf3",
+    "muted": "#8b949e"
+  },
+  "tech_stack": ["Unreal Engine 5.7", "C++", "Blueprint", "Blender", "PCG"]
+}
