@@ -190,9 +190,9 @@ def generate_typing_static(config: dict) -> None:
     write(DIST / "04-text" / "typing-static.svg", svg)
 
 
-def generate_feature_cards() -> None:
-    roadmap = load_json(ROADMAP_PATH)
-    c = roadmap["colors"]
+def generate_feature_cards(config: dict) -> None:
+    c = config["colors"]
+    roadmap_c = load_json(ROADMAP_PATH)["colors"]
     features = [
         ("Corps = inventaire", "Absorption ressources"),
         ("Predator", "Feux follets 30s"),
@@ -202,7 +202,7 @@ def generate_feature_cards() -> None:
     cards = []
     for index, (title, subtitle) in enumerate(features):
         x = 20 + index * 215
-        cards.append(f'<rect x="{x}" y="16" width="200" height="72" rx="10" fill="{c["panel"]}" stroke="{c["accent"]}" stroke-width="1"/>')
+        cards.append(f'<rect x="{x}" y="16" width="200" height="72" rx="10" fill="{c["panel"]}" stroke="{roadmap_c["accent"]}" stroke-width="1"/>')
         cards.append(
             f'<text x="{x + 16}" y="44" fill="{c["text"]}" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700">{title}</text>'
         )
@@ -229,7 +229,7 @@ def main() -> None:
     generate_tech_stack(config)
     generate_shields_row(config)
     generate_typing_static(config)
-    generate_feature_cards()
+    generate_feature_cards(config)
 
 
 if __name__ == "__main__":
