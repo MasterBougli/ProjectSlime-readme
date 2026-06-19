@@ -1,0 +1,43 @@
+name: Generate README animations
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate snake.svg (slime palette)
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: MasterBougli
+          outputs: dist/snake.svg?palette=green#7ee787,#0d1117#161b22#0d1117#21262d
+
+      - name: Generate roadmap.svg
+        run: python scripts/generate_roadmap_svg.py
+
+      - name: Generate activity-graph.svg
+        run: |
+          curl -fsSL \
+            "https://github-readme-activity-graph.vercel.app/graph?username=MasterBougli&theme=react&hide_border=true&area=true&bg_color=0d1117&color=7ee787&line=58a6ff&point=3fb950" \
+            -o dist/activity-graph.svg
+
+      - name: Push assets to output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

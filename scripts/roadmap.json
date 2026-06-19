@@ -1,0 +1,21 @@
+{
+  "title": "Predator Slime — Roadmap MVP",
+  "milestones": [
+    { "id": "F0", "label": "F0 Joueur", "status": "done" },
+    { "id": "F1", "label": "F1 Inventaire", "status": "active" },
+    { "id": "F2", "label": "F2 Dialogue", "status": "todo" },
+    { "id": "F3", "label": "F3 VS", "status": "todo" },
+    { "id": "F4", "label": "F4 Combat", "status": "todo" },
+    { "id": "F5", "label": "F5 Mimétisme", "status": "todo" },
+    { "id": "F6", "label": "F6 Progression", "status": "todo" },
+    { "id": "F7", "label": "F7 Léviathan", "status": "todo" }
+  ],
+  "colors": {
+    "done": "#3fb950",
+    "active": "#58a6ff",
+    "todo": "#30363d",
+    "text": "#e6edf3",
+    "bg": "#0d1117",
+    "accent": "#7ee787"
+  }
+}
