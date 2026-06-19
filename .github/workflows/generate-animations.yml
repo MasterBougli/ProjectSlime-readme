@@ -46,24 +46,29 @@ jobs:
           curl -fsSL "https://github-readme-activity-graph.vercel.app/graph?username=${{ env.GH_USER }}&theme=chartreuse-dark&hide_border=true&area=true" -o dist/01-contributions/activity-forest.svg
 
       - name: Download GitHub stats cards
+        continue-on-error: true
         run: |
-          curl -fsSL "https://github-readme-stats.vercel.app/api?username=${{ env.GH_USER }}&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=7ee787&icon_color=58a6ff&text_color=e6edf3" -o dist/02-stats/stats-card.svg
-          curl -fsSL "https://github-readme-streak-stats.herokuapp.com/?user=${{ env.GH_USER }}&theme=dark&hide_border=true&background=0D1117&ring=7EE787&fire=58A6FF&currStreakLabel=7EE787" -o dist/02-stats/streak.svg
-          curl -fsSL "https://github-readme-stats.vercel.app/api/top-langs/?username=${{ env.GH_USER }}&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&title_color=7ee787&text_color=e6edf3" -o dist/02-stats/top-langs.svg
-          curl -fsSL "https://github-profile-trophy.vercel.app/?username=${{ env.GH_USER }}&theme=onedark&column=4&margin-w=8&margin-h=8&no-bg=true" -o dist/02-stats/trophy.svg
+          curl -fsSL "https://github-readme-stats.vercel.app/api?username=${{ env.GH_USER }}&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=7ee787&icon_color=58a6ff&text_color=e6edf3" -o dist/02-stats/stats-card.svg || true
+          curl -fsSL "https://streak-stats.demolab.com/?user=${{ env.GH_USER }}&theme=dark&hide_border=true&background=0D1117&ring=7EE787&fire=58A6FF" -o dist/02-stats/streak.svg || true
+          curl -fsSL "https://github-readme-stats.vercel.app/api/top-langs/?username=${{ env.GH_USER }}&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&title_color=7ee787&text_color=e6edf3" -o dist/02-stats/top-langs.svg || true
+          curl -fsSL "https://github-profile-trophy.vercel.app/?username=${{ env.GH_USER }}&theme=onedark&column=4&margin-w=8&margin-h=8&no-bg=true" -o dist/02-stats/trophy.svg || true
+          python scripts/generate_stats_placeholders.py
 
       - name: Download header banners (Capsule Render)
+        continue-on-error: true
         run: |
-          curl -fsSL "https://capsule-render.vercel.app/api?type=waving&color=0:7ee787,100:0d1117&text=Predator%20Slime&height=120&section=header&fontSize=42&fontColor=e6edf3" -o dist/03-headers/capsule-waving.svg
-          curl -fsSL "https://capsule-render.vercel.app/api?type=soft&color=0:3fb950,100:161b22&text=ProjectSlime&height=100&section=header&fontSize=36" -o dist/03-headers/capsule-soft.svg
-          curl -fsSL "https://capsule-render.vercel.app/api?type=venom&color=0:7ee787,100:0d1117&text=Silvanterra&height=100&section=footer&fontSize=32" -o dist/03-headers/capsule-venom.svg
+          curl -fsSL "https://capsule-render.vercel.app/api?type=waving&color=0:7ee787,100:0d1117&text=Predator%20Slime&height=120&section=header&fontSize=42&fontColor=e6edf3" -o dist/03-headers/capsule-waving.svg || true
+          curl -fsSL "https://capsule-render.vercel.app/api?type=soft&color=0:3fb950,100:161b22&text=ProjectSlime&height=100&section=header&fontSize=36" -o dist/03-headers/capsule-soft.svg || true
+          curl -fsSL "https://capsule-render.vercel.app/api?type=venom&color=0:7ee787,100:0d1117&text=Silvanterra&height=100&section=footer&fontSize=32" -o dist/03-headers/capsule-venom.svg || true
 
       - name: Download typing SVG animations
+        continue-on-error: true
         run: |
-          curl -fsSL "https://readme-typing-svg.demolab.com/demo/?lines=Predator+Slime;UE+5.7;Silvanterra&font=Fira%20Code&center=true&width=435&height=55&size=22&color=7EE787&background=0D111700&vCenter=true" -o dist/04-text/typing-multiline.svg
-          curl -fsSL "https://readme-typing-svg.demolab.com/?lines=Absorb+·+Mimic+·+Conquer&font=Segoe+UI&center=true&width=380&height=50&size=20&color=58A6FF&background=0D111700" -o dist/04-text/typing-tagline.svg
+          curl -fsSL "https://readme-typing-svg.demolab.com/demo/?lines=Predator+Slime;UE+5.7;Silvanterra&font=Fira%20Code&center=true&width=435&height=55&size=22&color=7EE787&background=0D111700&vCenter=true" -o dist/04-text/typing-multiline.svg || true
+          curl -fsSL "https://readme-typing-svg.demolab.com/?lines=Absorb+·+Mimic+·+Conquer&font=Segoe+UI&center=true&width=380&height=50&size=20&color=58A6FF&background=0D111700" -o dist/04-text/typing-tagline.svg || true
 
       - name: Download 3D contribution graph
+        continue-on-error: true
         run: |
           curl -fsSL "https://github-profile-3d-contrib.vercel.app/profile.html.username=${{ env.GH_USER }}.svg" -o dist/01-contributions/contrib-3d.svg || echo "3d contrib skipped"
 

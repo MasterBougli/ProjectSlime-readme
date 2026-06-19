@@ -66,6 +66,8 @@ Assets générés sur la branche **`output`** · workflow toutes les **12 h**.
 
 <img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/02-stats/stats-card.svg" alt="stats-card" />
 
+*Live (si API dispo) :* `https://github-readme-stats.vercel.app/api?username=MasterBougli&theme=dark&show_icons=true`
+
 ### `streak` — Série de contributions
 
 <img src="https://raw.githubusercontent.com/MasterBougli/ProjectSlime-readme/output/02-stats/streak.svg" alt="streak" />
