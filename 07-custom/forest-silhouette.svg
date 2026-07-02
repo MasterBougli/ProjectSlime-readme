@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="120" viewBox="0 0 900 120" role="img" aria-label="Silvanterra forest">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="120" fill="url(#sky)"/>
+  <g fill="#3fb950" opacity="0.85">
+    <polygon points="40,120 70,45 100,120"><animateTransform attributeName="transform" type="rotate" values="0 70 120;-1 70 120;0 70 120" dur="4s" repeatCount="indefinite"/></polygon>
+    <polygon points="120,120 155,30 190,120"/>
+    <polygon points="220,120 250,50 280,120"><animateTransform attributeName="transform" type="rotate" values="0 250 120;1.5 250 120;0 250 120" dur="5s" repeatCount="indefinite"/></polygon>
+    <polygon points="320,120 360,35 400,120"/>
+    <polygon points="450,120 480,55 510,120"/>
+    <polygon points="560,120 600,25 640,120"><animateTransform attributeName="transform" type="rotate" values="0 600 120;-1 600 120;0 600 120" dur="4.5s" repeatCount="indefinite"/></polygon>
+    <polygon points="680,120 715,40 750,120"/>
+    <polygon points="780,120 815,50 850,120"/>
+  </g>
+  <rect y="100" width="900" height="20" fill="#0d1117"/>
+  <text x="450" y="18" text-anchor="middle" fill="#7ee787" font-family="Segoe UI,sans-serif" font-size="13" font-weight="600">Silvanterra</text>
+</svg>

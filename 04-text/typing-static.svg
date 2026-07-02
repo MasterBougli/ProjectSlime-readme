@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="110" viewBox="0 0 420 110" role="img">
+  <rect width="420" height="110" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="24" y="34" fill="#7ee787" font-family="Consolas, monospace" font-size="18" font-weight="600">Predator Slime</text> <text x="24" y="62" fill="#7ee787" font-family="Consolas, monospace" font-size="18" font-weight="600">Unreal Engine 5.7</text> <text x="24" y="90" fill="#7ee787" font-family="Consolas, monospace" font-size="18" font-weight="600">Silvanterra · MVP Forêt</text>
+  <rect x="390" y="18" width="3" height="74" fill="#7ee787">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+</svg>
